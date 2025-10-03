@@ -143,6 +143,7 @@ class _PreferencesScreenState extends State<PreferencesScreen>
   bool _use6ColLayout = false;
   bool _kanataEnabled = false;
   bool _keyboardFollowsMouse = false;
+  bool _hideOnDefaultLayer = false;
 
   @override
   void initState() {
@@ -298,6 +299,7 @@ class _PreferencesScreenState extends State<PreferencesScreen>
       _use6ColLayout = prefs['use6ColLayout'];
       _kanataEnabled = prefs['kanataEnabled'];
       _keyboardFollowsMouse = prefs['keyboardFollowsMouse'] ?? false;
+      _hideOnDefaultLayer = prefs['hideOnDefaultLayer'] ?? false;
     });
   }
 
@@ -912,6 +914,7 @@ class _PreferencesScreenState extends State<PreferencesScreen>
           use6ColLayout: _use6ColLayout,
           kanataEnabled: _kanataEnabled,
           keyboardFollowsMouse: _keyboardFollowsMouse,
+          hideOnDefaultLayer: _hideOnDefaultLayer,
           updateAdvancedSettingsEnabled: (value) {
             setState(() => _advancedSettingsEnabled = value);
             _updateMainWindow('updateAdvancedSettingsEnabled', value);
@@ -947,6 +950,10 @@ class _PreferencesScreenState extends State<PreferencesScreen>
           updateKeyboardFollowsMouse: (value) {
             setState(() => _keyboardFollowsMouse = value);
             _updateMainWindow('updateKeyboardFollowsMouse', value);
+          },
+          updateHideOnDefaultLayer: (value) {
+            setState(() => _hideOnDefaultLayer = value);
+            _updateMainWindow('updateHideOnDefaultLayer', value);
           },
         );
       case 'About':
