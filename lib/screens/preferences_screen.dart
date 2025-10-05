@@ -391,6 +391,7 @@ class _PreferencesScreenState extends State<PreferencesScreen>
       'use6ColLayout': _use6ColLayout,
       'kanataEnabled': _kanataEnabled,
       'keyboardFollowsMouse': _keyboardFollowsMouse,
+      'hideOnDefaultLayer': _hideOnDefaultLayer,
     };
 
     await _prefsService.saveAllPreferences(prefs);

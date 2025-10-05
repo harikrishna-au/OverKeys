@@ -677,7 +677,6 @@ class _MainAppState extends State<MainApp> with TrayListener, WindowListener {
       final activeLayer = _userLayers.where((l) => l.trigger == key);
       for (final layout in activeLayer) {
         if (layout.type == 'toggle' && isPressed) {
-          final previousLayout = _keyboardLayout;
           setState(() {
             if (_keyboardLayout.name != layout.name) {
               _keyboardLayout = layout;
