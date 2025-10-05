@@ -487,6 +487,14 @@ class _MainAppState extends State<MainApp> with TrayListener, WindowListener {
   }
 
   Future<void> _useKanata() async {
+    final configService = ConfigService();
+    final userLayout = await configService.getUserLayout();
+
+    if (userLayout != null) {
+      setState(() {
+        _defaultUserLayout = userLayout;
+      });
+    }
     if (_kanataEnabled && _advancedSettingsEnabled) {
       _kanataService.connect();
     }
@@ -724,6 +732,7 @@ class _MainAppState extends State<MainApp> with TrayListener, WindowListener {
             }
           }
         }
+        _updateAutoHideBasedOnLayer(_keyboardLayout.name == _defaultUserLayout?.name);
       }
     }
   }
